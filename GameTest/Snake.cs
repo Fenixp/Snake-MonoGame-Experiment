@@ -91,6 +91,7 @@ namespace GameTest
 
         private void MoveInDirection(Square square, DirectionEnum direction)
         {
+            //Todo: Rewrite the direction alghorytms. They're embarassing.
             switch (direction)
             { 
                 case DirectionEnum.up:

@@ -10,3 +10,5 @@ c:\users\david\documents\visual studio 2013\Projects\GameTest\GameTest\obj\x86\D
 c:\users\david\documents\visual studio 2013\Projects\GameTest\GameTest\obj\x86\Debug\GameTest.pdb
 c:\users\david\documents\visual studio 2013\Projects\GameTest\GameTest\bin\WindowsGL\Debug\Content\minesweeper.png
 C:\Users\David\Documents\Visual Studio 2013\Projects\GameTest\GameTest\bin\WindowsGL\Debug\Content\Square.png
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\GameTest\obj\x86\Debug\GameTest.exe
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\GameTest\obj\x86\Debug\GameTest.pdb
