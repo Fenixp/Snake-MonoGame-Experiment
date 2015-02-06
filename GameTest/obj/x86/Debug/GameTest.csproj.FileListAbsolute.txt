@@ -1,0 +1,12 @@
+c:\users\david\documents\visual studio 2013\Projects\GameTest\GameTest\bin\WindowsGL\Debug\SDL.dll
+c:\users\david\documents\visual studio 2013\Projects\GameTest\GameTest\bin\WindowsGL\Debug\GameTest.exe
+c:\users\david\documents\visual studio 2013\Projects\GameTest\GameTest\bin\WindowsGL\Debug\GameTest.pdb
+c:\users\david\documents\visual studio 2013\Projects\GameTest\GameTest\bin\WindowsGL\Debug\Lidgren.Network.dll
+c:\users\david\documents\visual studio 2013\Projects\GameTest\GameTest\bin\WindowsGL\Debug\MonoGame.Framework.dll
+c:\users\david\documents\visual studio 2013\Projects\GameTest\GameTest\bin\WindowsGL\Debug\OpenTK.dll
+c:\users\david\documents\visual studio 2013\Projects\GameTest\GameTest\bin\WindowsGL\Debug\Tao.Sdl.dll
+c:\users\david\documents\visual studio 2013\Projects\GameTest\GameTest\obj\x86\Debug\GameTest.csprojResolveAssemblyReference.cache
+c:\users\david\documents\visual studio 2013\Projects\GameTest\GameTest\obj\x86\Debug\GameTest.exe
+c:\users\david\documents\visual studio 2013\Projects\GameTest\GameTest\obj\x86\Debug\GameTest.pdb
+c:\users\david\documents\visual studio 2013\Projects\GameTest\GameTest\bin\WindowsGL\Debug\Content\minesweeper.png
+C:\Users\David\Documents\Visual Studio 2013\Projects\GameTest\GameTest\bin\WindowsGL\Debug\Content\Square.png
