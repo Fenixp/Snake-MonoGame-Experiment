@@ -95,34 +95,33 @@ namespace GameTest
             switch (direction)
             { 
                 case DirectionEnum.up:
-                    square.YCoord--;
-                    if (square.YCoord < 0)
-                    {
-                        square.YCoord = _yLimit - 1;
-                    }
+                    MoveCoordAdd(0, -1, square);
                     break;
                 case DirectionEnum.down:
-                    square.YCoord++;
-                    if (square.YCoord > _yLimit)
-                    {
-                        square.YCoord = 0;
-                    }
+                    MoveCoordAdd(0, 1, square);
                     break;
                 case DirectionEnum.left:
-                    square.XCoord--;
-                    if (square.XCoord < 0)
-                    {
-                        square.XCoord = _xLimit - 1;
-                    }
+                    MoveCoordAdd(-1, 0, square);
                     break;
                 case DirectionEnum.right:
-                    square.XCoord++;
-                    if (square.XCoord > _xLimit)
-                    {
-                        square.XCoord = 0;
-                    }
+                    MoveCoordAdd(1, 0, square);
                     break;
             }
+        }
+
+        private void MoveCoordAdd(int x, int y, Square square)
+        {
+            square.XCoord = CalculateCoords(square.XCoord + x, _xLimit);
+            square.YCoord = CalculateCoords(square.YCoord + y, _yLimit);
+        }
+
+        private int CalculateCoords(int coord, int limit)
+        {
+            if (coord < 0)
+            {
+                coord = coord + limit;
+            }
+            return coord % (limit);
         }
 
         private void ProcessObstacle(object obstacle)

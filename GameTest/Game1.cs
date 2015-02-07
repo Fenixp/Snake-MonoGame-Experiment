@@ -28,25 +28,18 @@ namespace GameTest
         Random rnd = new Random();
         int gameSpeed = 100;
         double lastTick;
-        int windowSizeY = 600;
-        int windowSizeX = 600;
+        int windowSize = 600;
         int cols = 15;
         int rows = 15;
-        int centerX;
-        int centerY;
+        int center;
         int gridSize = 20;
-        int height;
-        int width;
 
         public Game1()
             : base()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            centerX = windowSizeX / 2;
-            centerY = windowSizeY / 2;
-            height = windowSizeY;
-            width = windowSizeX;
+            center = windowSize / 2;
             gameObjects = new List<Square>();
         }
 
@@ -59,8 +52,8 @@ namespace GameTest
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            graphics.PreferredBackBufferWidth = windowSizeX;
-            graphics.PreferredBackBufferHeight = windowSizeY;
+            graphics.PreferredBackBufferWidth = windowSize;
+            graphics.PreferredBackBufferHeight = windowSize;
             graphics.ApplyChanges();
             base.Initialize();
         }
@@ -75,7 +68,7 @@ namespace GameTest
             spriteBatch = new SpriteBatch(GraphicsDevice);
             blackSquare = Content.Load<Texture2D>("Square.png");
             squareObject = new Square(29, 0);
-            snake = new Snake(windowSizeX / gridSize, windowSizeY / gridSize);
+            snake = new Snake(windowSize / gridSize, windowSize / gridSize);
             texture1px = new Texture2D(graphics.GraphicsDevice, 1, 1);
             texture1px.SetData(new Color[] { Color.Black });
             lastTick = 0;
@@ -119,8 +112,6 @@ namespace GameTest
                 snake.Direction = DirectionEnum.right;
             }
 
-            double hello = gameTime.TotalGameTime.TotalMilliseconds - lastTick;
-
             snake.Neighbours = CheckNeighbours();
 
             if (gameTime.TotalGameTime.TotalMilliseconds - lastTick > gameSpeed)
@@ -131,14 +122,35 @@ namespace GameTest
 
             if (snake.Squares.Contains(squareObject))
             {
-                squareObject = new Square(rnd.Next(windowSizeX / gridSize), rnd.Next(windowSizeY / gridSize));
+                squareObject = GenerateNextDot(snake);
                 gameObjects.Add(squareObject);
                 gameSpeed -= 1;
             }
 
-            Debug.WriteLine(gameTime.TotalGameTime.ToString() + " : " + hello.ToString());
-
             base.Update(gameTime);
+        }
+
+        private Square GenerateNextDot(Snake snake)
+        {
+            int coordX = rnd.Next(windowSize / gridSize);
+            int coordY = rnd.Next(windowSize / gridSize);
+            bool alternate = true;
+
+            while (snake.Squares.Any(x => x.XCoord == coordX && x.YCoord == coordY))
+            {
+                if (alternate)
+                {
+                    coordX = CalculateCoords(coordX + 1);
+                }
+                else
+                {
+                    coordY = CalculateCoords(coordY + 1);
+                }
+
+                alternate = !alternate;
+            }
+
+            return new Square(coordX, coordY);
         }
 
         /// <summary>
@@ -153,12 +165,12 @@ namespace GameTest
 
             for (float x = -cols; x < cols; x++)
             {
-                Rectangle rectangle = new Rectangle((int)(centerX + x * gridSize), 0, 1, height);
+                Rectangle rectangle = new Rectangle((int)(center + x * gridSize), 0, 1, windowSize);
                 spriteBatch.Draw(texture1px, rectangle, Color.Red);
             }
             for (float y = -rows; y < rows; y++)
             {
-                Rectangle rectangle = new Rectangle(0, (int)(centerY + y * gridSize), width, 1);
+                Rectangle rectangle = new Rectangle(0, (int)(center + y * gridSize), windowSize, 1);
                 spriteBatch.Draw(texture1px, rectangle, Color.Red);
             }
 
@@ -216,9 +228,9 @@ namespace GameTest
         {
             if (coord < 0)
             {
-                coord = coord + windowSizeX / gridSize;
+                coord = coord + (windowSize / gridSize);
             }
-            return coord % (windowSizeX / gridSize);
+            return coord % (windowSize / gridSize);
         }
     }
 }

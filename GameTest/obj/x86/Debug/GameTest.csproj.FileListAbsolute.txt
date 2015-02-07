@@ -12,3 +12,12 @@ c:\users\david\documents\visual studio 2013\Projects\GameTest\GameTest\bin\Windo
 C:\Users\David\Documents\Visual Studio 2013\Projects\GameTest\GameTest\bin\WindowsGL\Debug\Content\Square.png
 C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\GameTest\obj\x86\Debug\GameTest.exe
 C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\GameTest\obj\x86\Debug\GameTest.pdb
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\GameTest\bin\WindowsGL\Debug\SDL.dll
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\GameTest\bin\WindowsGL\Debug\Content\Square.png
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\GameTest\bin\WindowsGL\Debug\GameTest.exe
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\GameTest\bin\WindowsGL\Debug\GameTest.pdb
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\GameTest\bin\WindowsGL\Debug\Lidgren.Network.dll
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\GameTest\bin\WindowsGL\Debug\MonoGame.Framework.dll
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\GameTest\bin\WindowsGL\Debug\OpenTK.dll
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\GameTest\bin\WindowsGL\Debug\Tao.Sdl.dll
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\GameTest\obj\x86\Debug\GameTest.csprojResolveAssemblyReference.cache
