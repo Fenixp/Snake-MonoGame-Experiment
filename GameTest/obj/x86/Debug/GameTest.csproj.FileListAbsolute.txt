@@ -21,3 +21,4 @@ C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\GameTest\bin\WindowsGL
 C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\GameTest\bin\WindowsGL\Debug\OpenTK.dll
 C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\GameTest\bin\WindowsGL\Debug\Tao.Sdl.dll
 C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\GameTest\obj\x86\Debug\GameTest.csprojResolveAssemblyReference.cache
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\GameTest\bin\WindowsGL\Debug\Content\font.xnb

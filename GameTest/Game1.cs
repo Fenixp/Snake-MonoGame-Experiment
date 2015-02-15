@@ -25,13 +25,18 @@ namespace GameTest
         Square squareObject;
         Snake snake;
         Random rnd = new Random();
+        SpriteFont font;
         int gameSpeed = 100;
         double lastTick;
+        double framerate;
+        double frames;
+        double lastFrames;
         int windowSize = 600;
         int cols = 15;
         int rows = 15;
         int center;
         int gridSize = 20;
+        int frameRate = 0;
 
         public Game1()
             : base()
@@ -73,6 +78,7 @@ namespace GameTest
             lastTick = 0;
             gameObjects.AddRange(snake.Squares);
             gameObjects.Add(squareObject);
+            font = Content.Load<SpriteFont>("font");
         }
 
         /// <summary>
@@ -112,6 +118,16 @@ namespace GameTest
             }
 
             snake.Neighbours = CheckNeighbours();
+
+            framerate += gameTime.ElapsedGameTime.Milliseconds;
+            frames++;
+
+            if (framerate > 1000)
+            {
+                lastFrames = frames;
+                framerate = 0;
+                frames = 0;
+            }
 
             if (gameTime.TotalGameTime.TotalMilliseconds - lastTick > gameSpeed)
             {
@@ -179,6 +195,8 @@ namespace GameTest
             {
                 spriteBatch.Draw(blackSquare, new Vector2(square.XCoord * gridSize, square.YCoord * gridSize), Color.White);
             }
+
+            spriteBatch.DrawString(font, lastFrames.ToString(), new Vector2(0, 0), Color.White);
 
             spriteBatch.End();
 
