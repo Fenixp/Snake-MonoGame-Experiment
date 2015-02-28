@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommonLib.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,7 +38,7 @@ namespace GameTest
             _xLimit = xLimit;
             _yLimit = yLimit;
             _squares = new List<Square>();
-            _squares.Add(new Square(0, 0));
+            _squares.Add(new Square(0, 0, ContentReader.Tilesets.SnakeSpriteSheet.BlackSquare));
         }
 
         public void Eat(Square square)
@@ -45,15 +46,15 @@ namespace GameTest
             _squares.Add(square);
             _squares.AddRange(new List<Square> 
             { 
-                fatty(square),
-                fatty(square),
-                fatty(square)
+                Fatty(square),
+                Fatty(square),
+                Fatty(square)
             });
         }
 
-        public Square fatty(Square square)
+        public Square Fatty(Square square)
         {
-            return new Square(square.XCoord, square.YCoord);
+            return new Square(square.XCoord, square.YCoord, ContentReader.Tilesets.SnakeSpriteSheet.BlackSquare);
         }
 
         public void Move()
@@ -70,8 +71,30 @@ namespace GameTest
             if (Alive)
             {
                 MoveInternal(Direction);
+                RedrawTiles();
             }
         }
+
+        private void RedrawTiles()
+        {
+            for (int i = 0; i < _squares.Count; i++)
+            {
+                if (i == _squares.Count - 1)
+                {
+                    _squares[i].TileInfo = GetDirectionalTileTail(_squares[i].Direction);
+                }
+                else if (i == 0)
+                {
+                    _squares[i].TileInfo = GetDirectionalTileHead(_squares[i].Direction);
+                }
+                else
+                {
+                    _squares[i].TileInfo = GetDirectionalTile(_squares[i].Direction, i);
+                }
+            }
+        }
+
+
 
         private void MoveInternal(DirectionEnum direction)
         {
@@ -80,18 +103,109 @@ namespace GameTest
                 if (i == 0)
                 {
                     MoveInDirection(_squares[i], direction);
+                    _squares[i].Direction = direction;
                 }
                 else
                 {
                     _squares[i].XCoord = _squares[i - 1].XCoord;
                     _squares[i].YCoord = _squares[i - 1].YCoord;
+                    _squares[i].Direction = _squares[i - 1].Direction;
                 }
+            }
+        }
+
+        private TileInfo GetDirectionalTileHead(DirectionEnum direction)
+        {
+            switch (direction)
+            { 
+                case DirectionEnum.up:
+                    return ContentReader.Tilesets.SnakeSpriteSheet.HeadBlockTop;
+                case DirectionEnum.down:
+                    return ContentReader.Tilesets.SnakeSpriteSheet.HeadBlockBottom;
+                case DirectionEnum.left:
+                    return ContentReader.Tilesets.SnakeSpriteSheet.HeadBlockLeft;
+                case DirectionEnum.right:
+                    return ContentReader.Tilesets.SnakeSpriteSheet.HeadBlockRight;
+            }
+            return ContentReader.Tilesets.SnakeSpriteSheet.HeadBlockTop;
+        }
+
+        private TileInfo GetDirectionalTileTail(DirectionEnum direction)
+        {
+            switch (direction)
+            { 
+                case DirectionEnum.up:
+                    return ContentReader.Tilesets.SnakeSpriteSheet.TailBlockBottom;
+                case DirectionEnum.down:
+                    return ContentReader.Tilesets.SnakeSpriteSheet.TailBlockTop;
+                case DirectionEnum.left:
+                    return ContentReader.Tilesets.SnakeSpriteSheet.TailBlockLeft;
+                case DirectionEnum.right:
+                    return ContentReader.Tilesets.SnakeSpriteSheet.TailBlockRight;
+            }
+            return ContentReader.Tilesets.SnakeSpriteSheet.TailBlockTop;
+        }
+
+        private TileInfo GetDirectionalTile(DirectionEnum direction, int squarePosition)
+        {
+            if (_squares[squarePosition - 1].Direction == _squares[squarePosition].Direction)
+            {
+                switch (direction)
+                {
+                    case DirectionEnum.up:
+                        return ContentReader.Tilesets.SnakeSpriteSheet.SnakeBlockTop;
+                    case DirectionEnum.down:
+                        return ContentReader.Tilesets.SnakeSpriteSheet.SnakeBlockTop;
+                    case DirectionEnum.left:
+                        return ContentReader.Tilesets.SnakeSpriteSheet.SnakeBlockLeft;
+                    case DirectionEnum.right:
+                        return ContentReader.Tilesets.SnakeSpriteSheet.SnakeBlockRight;
+                }
+            }
+            else
+            {
+                return GetCorners(_squares[squarePosition - 1], _squares[squarePosition + 1], _squares[squarePosition]);
+            }
+            return ContentReader.Tilesets.SnakeSpriteSheet.SnakeBlockTop;
+        }
+
+        private TileInfo GetCorners(Square square1, Square square2, Square corner)
+        {
+            Square yLineSquare;
+            Square xLineSquare;
+
+            if (square1.YCoord == corner.YCoord)
+            {
+                yLineSquare = square1;
+                xLineSquare = square2;
+            }
+            else
+            {
+                yLineSquare = square2;
+                xLineSquare = square1;
+            }
+
+            if (yLineSquare.XCoord > xLineSquare.XCoord && yLineSquare.YCoord > xLineSquare.YCoord)
+            {
+                return ContentReader.Tilesets.SnakeSpriteSheet.TransitionRightTop;
+            }
+            else if (yLineSquare.XCoord > xLineSquare.XCoord && yLineSquare.YCoord < xLineSquare.YCoord)
+            {
+                return ContentReader.Tilesets.SnakeSpriteSheet.TransitionRightBottom;
+            }
+            else if (yLineSquare.XCoord < xLineSquare.XCoord && yLineSquare.YCoord > xLineSquare.YCoord)
+            {
+                return ContentReader.Tilesets.SnakeSpriteSheet.TransitionLeftTop;
+            }
+            else
+            {
+                return ContentReader.Tilesets.SnakeSpriteSheet.TransitionLeftBottom;
             }
         }
 
         private void MoveInDirection(Square square, DirectionEnum direction)
         {
-            //Todo: Rewrite the direction alghorytms. They're embarassing.
+            square.Direction = direction;
             switch (direction)
             { 
                 case DirectionEnum.up:

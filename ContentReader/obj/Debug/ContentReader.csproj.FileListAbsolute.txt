@@ -1,0 +1,17 @@
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\ContentReader\bin\Debug\ContentReader.dll
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\ContentReader\bin\Debug\ContentReader.pdb
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\ContentReader\bin\Debug\CommonLib.dll
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\ContentReader\bin\Debug\MonoGame.Framework.dll
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\ContentReader\bin\Debug\SharpDX.dll
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\ContentReader\bin\Debug\SharpDX.Direct3D11.dll
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\ContentReader\bin\Debug\SharpDX.XAudio2.dll
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\ContentReader\bin\Debug\SharpDX.DXGI.dll
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\ContentReader\bin\Debug\CommonLib.pdb
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\ContentReader\bin\Debug\MonoGame.Framework.xml
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\ContentReader\bin\Debug\SharpDX.xml
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\ContentReader\bin\Debug\SharpDX.Direct3D11.xml
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\ContentReader\bin\Debug\SharpDX.XAudio2.xml
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\ContentReader\bin\Debug\SharpDX.DXGI.xml
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\ContentReader\obj\Debug\ContentReader.csprojResolveAssemblyReference.cache
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\ContentReader\obj\Debug\ContentReader.dll
+C:\Users\David\Documents\GitHub\Snake-MonoGame-Experiment\ContentReader\obj\Debug\ContentReader.pdb

@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
 using System.Diagnostics;
+using CommonLib.Common;
 #endregion
 
 namespace GameTest
@@ -21,7 +22,6 @@ namespace GameTest
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Texture2D texture1px;
-        Texture2D blackSquare;
         Square squareObject;
         Snake snake;
         Random rnd = new Random();
@@ -43,6 +43,7 @@ namespace GameTest
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            ContentSettings.Content = Content;
             center = windowSize / 2;
             gameObjects = new List<Square>();
         }
@@ -70,8 +71,7 @@ namespace GameTest
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            blackSquare = Content.Load<Texture2D>("Square.png");
-            squareObject = new Square(29, 0);
+            squareObject = new Square(29, 0, ContentReader.Tilesets.SnakeSpriteSheet.BlackSquare);
             snake = new Snake(windowSize / gridSize, windowSize / gridSize);
             texture1px = new Texture2D(graphics.GraphicsDevice, 1, 1);
             texture1px.SetData(new Color[] { Color.Black });
@@ -165,7 +165,7 @@ namespace GameTest
                 alternate = !alternate;
             }
 
-            return new Square(coordX, coordY);
+            return new Square(coordX, coordY, ContentReader.Tilesets.SnakeSpriteSheet.BlackSquare);
         }
 
         /// <summary>
@@ -189,11 +189,11 @@ namespace GameTest
                 spriteBatch.Draw(texture1px, rectangle, Color.Red);
             }
 
-            spriteBatch.Draw(blackSquare, new Vector2(squareObject.XCoord * gridSize, squareObject.YCoord * gridSize), Color.White);
+            spriteBatch.Draw(squareObject.TileInfo.Texture, new Vector2(squareObject.XCoord * gridSize, squareObject.YCoord * gridSize), squareObject.TileInfo.Rectangle, Color.White);
 
             foreach(Square square in snake.Squares)
             {
-                spriteBatch.Draw(blackSquare, new Vector2(square.XCoord * gridSize, square.YCoord * gridSize), Color.White);
+                spriteBatch.Draw(square.TileInfo.Texture, new Vector2(square.XCoord * gridSize, square.YCoord * gridSize), square.TileInfo.Rectangle, Color.White);
             }
 
             spriteBatch.DrawString(font, lastFrames.ToString(), new Vector2(0, 0), Color.White);

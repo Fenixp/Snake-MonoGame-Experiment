@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommonLib.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,37 +8,16 @@ namespace GameTest
 {
     public class Square
     {
-        private int _xCoord;
-        private int _yCoord;
-
-        public Square(int xCoord, int yCoord)
+        public Square(int xCoord, int yCoord, TileInfo tileInfo)
         {
-            _xCoord = xCoord;
-            _yCoord = yCoord;
+            XCoord = xCoord;
+            YCoord = yCoord;
+            TileInfo = tileInfo;
         }
 
-        public int XCoord
-        {
-            get
-            {
-                return _xCoord;
-            }
-            set
-            {
-                _xCoord = value;
-            }
-        }
-
-        public int YCoord
-        {
-            get
-            {
-                return _yCoord;
-            }
-            set
-            {
-                _yCoord = value;
-            }
-        }
+        public TileInfo TileInfo;
+        public int XCoord;
+        public int YCoord;
+        public DirectionEnum Direction;
     }
 }

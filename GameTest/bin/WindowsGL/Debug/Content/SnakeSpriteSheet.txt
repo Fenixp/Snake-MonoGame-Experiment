@@ -1,0 +1,17 @@
+SnakeSpriteSheet.png
+0 0 20 20 HeadBlockBottom
+20 0 20 20 HeadBlockLeft
+40 0 20 20 HeadBlockRight
+60 0 20 20 HeadBlockTop
+80 0 20 20 SnakeBlockLeft
+100 0 20 20 SnakeBlockRight
+0 20 20 20 TailBlockBottom
+20 20 20 20 TailBlockLeft
+40 20 20 20 TailBlockRight
+60 20 20 20 TailBlockTop
+80 20 20 20 SnakeBlockTop
+100 20 20 20 BlackSquare
+0 40 20 20 TransitionLeftTop
+20 40 20 20 TransitionRightTop
+20 20 20 20 TransitionLeftBottom
+40 20 20 20 TransitionRightBottom
